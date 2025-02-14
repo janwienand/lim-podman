@@ -26,7 +26,7 @@ podman load -i lim.tar
 
 ### 🐳 Deployment
 1. Create Server Certificate
-```shell
+```
 LIM_SERVER_CERT_PWD="$(openssl rand -base64 32)"
 
 openssl req \
@@ -45,7 +45,7 @@ openssl pkcs12 -export \
 echo "Paste the following value in .env > ASPNETCORE_Kestrel__Certificates__Default__Password : $LIM_SERVER_CERT_PWD" 
 ```
 2. Create Signing Certificate
-```shell
+```
 LIM_SIGNING_CERT_PWD="$(openssl rand -base64 32)"
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 \
  -keyout secrets/lim-signing-key.pem \
@@ -68,7 +68,7 @@ echo "Paste the following value in .env > Signing__CertificatePassword : $LIM_SI
 4. Review and edit the `docker-compose.yml` file if needed
 
 5. Create a `data` folder and set write permissions to your container
-```shell
+```
 sudo chmod -R 777 data secrets
 
 # OR run
