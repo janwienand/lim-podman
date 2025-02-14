@@ -28,15 +28,7 @@ If you plan to deploy this component on an offline environment, below are the co
 
 ### 🐳 Deployment
 
-1. Create a `data` and `secrets` folder and set write permissions to your container:
-   ```sh
-   sudo chmod -R 777 data secrets
-   ```
-   
-   Or run:
-   ```sh
-   sudo ./check-volumes-permissions.sh
-   ```
+1. Create a `data` and `secrets` folder
 2. Create Server Certificate:
    ```sh
    LIM_SERVER_CERT_PWD="$(openssl rand -base64 32)"
@@ -85,8 +77,17 @@ If you plan to deploy this component on an offline environment, below are the co
    2. Change any value set to `changeme`.
 
 5. Review and edit the `docker-compose.yml` file if needed.
+6. Set write permissions to your container:
+   ```sh
+   sudo chmod -R 777 data secrets
+   ```
+   
+   Or run:
+   ```sh
+   sudo ./check-volumes-permissions.sh
+   ```
 
-6. Run the following command:
+7. Run the following command:
    ```sh
    podman compose up -d
    ```
