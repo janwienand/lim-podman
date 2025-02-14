@@ -28,7 +28,16 @@ If you plan to deploy this component on an offline environment, below are the co
 
 ### 🐳 Deployment
 
-1. Create Server Certificate:
+1. Create a `data` and `secrets` folder and set write permissions to your container:
+   ```sh
+   sudo chmod -R 777 data secrets
+   ```
+   
+   Or run:
+   ```sh
+   sudo ./check-volumes-permissions.sh
+   ```
+2. Create Server Certificate:
    ```sh
    LIM_SERVER_CERT_PWD="$(openssl rand -base64 32)"
 
@@ -48,7 +57,7 @@ If you plan to deploy this component on an offline environment, below are the co
    echo "Paste the following value in .env > ASPNETCORE_Kestrel__Certificates__Default__Password : $LIM_SERVER_CERT_PWD"
    ```
 
-2. Create Signing Certificate:
+3. Create Signing Certificate:
    ```sh
    LIM_SIGNING_CERT_PWD="$(openssl rand -base64 32)"
 
@@ -66,7 +75,7 @@ If you plan to deploy this component on an offline environment, below are the co
    echo "Paste the following value in .env > Signing__CertificatePassword : $LIM_SIGNING_CERT_PWD"
    ```
 
-3. Copy or rename `.env.template` to `.env`. Review and edit the `.env` file:
+4. Copy or rename `.env.template` to `.env`. Review and edit the `.env` file:
    
    1. Generate JWT Security Key:
       ```sh
@@ -75,17 +84,7 @@ If you plan to deploy this component on an offline environment, below are the co
       Set this value in .env > `JWT__SecurityKey`.
    2. Change any value set to `changeme`.
 
-4. Review and edit the `docker-compose.yml` file if needed.
-
-5. Create a `data` folder and set write permissions to your container:
-   ```sh
-   sudo chmod -R 777 data secrets
-   ```
-   
-   Or run:
-   ```sh
-   sudo ./check-volumes-permissions.sh
-   ```
+5. Review and edit the `docker-compose.yml` file if needed.
 
 6. Run the following command:
    ```sh
