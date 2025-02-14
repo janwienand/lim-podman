@@ -66,13 +66,13 @@ If you plan to deploy this component on an offline environment, below are the co
    echo "Paste the following value in .env > Signing__CertificatePassword : $LIM_SIGNING_CERT_PWD"
    ```
 
-3. Copy or rename [.env.template](.env.template) to `.env`. Review and edit the `.env` file:
+3. Copy or rename `.env.template` to `.env`. Review and edit the `.env` file:
    
    1. Generate JWT Security Key:
       ```sh
       openssl rand -base64 32 | tr -d '[:punct:]'
       ```
-      Set this value in [.env](.env) > `JWT__SecurityKey`.
+      Set this value in .env > `JWT__SecurityKey`.
    2. Change any value set to `changeme`.
 
 4. Review and edit the `docker-compose.yml` file if needed.
