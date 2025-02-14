@@ -1,0 +1,15 @@
+version: "3"
+services:
+  lim:
+    image: "fortifydocker/lim:24.4.ubi.9"
+    container_name: "lim"
+    ports:
+      - "8080:8080"
+      - "8443:8443"
+    volumes:
+      - ./data/logs:/app/logs:z
+      - ./data/certificates:/app/certificates:z # Optional if setting up SSL in the container, also recommended if using a provided signing cert
+      - ./data/database:/app/database:z
+      - ./secrets:/app/secrets:z
+    restart: always
+    env_file: .env
